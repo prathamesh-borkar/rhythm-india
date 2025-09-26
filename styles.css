@@ -149,5 +149,33 @@ input:focus, select:focus, button:focus, .more-btn:focus, .day-toggle:focus {
     .featured-grid{grid-template-columns:1fr}
   }
 
+@media(max-width:520px){
+  .neon-title { font-size: 24px; line-height: 1.2; }
+  .tagline { font-size: 14px; }
+  .btn { font-size: 14px; padding: 8px 14px; }
+}
+@media(max-width:520px){
+  .featured-card img { height: 180px; }
+  .artist-thumb { width: 70px; height: 70px; }
+}
+@media(max-width:520px){
+  .hero-inner { padding: 18px; }
+  .highlights { flex-direction: column; gap: 12px; }
+  .highlight-card { min-width: 100%; }
+}
+@media(max-width:520px){
+  .stage-wrap { height: 300px; }
+  .stage { height: 240px; }
+  .performer-img { width: 100px; height: 100px; }
+}
+@media(max-width:520px){
+  .form-grid input, .form-grid select {
+    font-size: 16px; /* avoids zooming on iOS */
+    padding: 12px;
+  }
+}
+@media(max-width:520px){
+  .site-footer { flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+}
 
   
