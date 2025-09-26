@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stage Preview — Rhythm India</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg">
+  <header class="topbar">
+    <div class="brand">RHYTHM INDIA</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="lineup.html">Lineup</a>
+      <a href="stage.html">Stage Preview</a>
+      <a href="login.html">Login</a>
+      <a href="booking.html" class="cta">Book Tickets</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2 class="page-title">3D Stage Preview</h2>
+    <p class="lead">Drag the stage to rotate it freely in X and Y (full 360° support). Change lights and select performers to preview their stage vibe.</p>
+
+    <div class="stage-grid">
+      <div id="stageWrap" class="stage-wrap">
+        <div id="stage" class="stage">
+          <div class="audience-blur"></div>
+          <div class="stage-floor"></div>
+          <img id="performerImg" class="performer-img" alt="Performer" />
+          <div id="performer" class="performer">ARTIST</div>
+          <div class="spotlight spot1"></div>
+          <div class="spotlight spot2"></div>
+          <div class="spotlight spot3"></div>
+        </div>
+      </div>
+
+      <aside class="stage-controls">
+        <label>Choose artist:
+          <select id="artistSelect">
+            <option>Arijit Singh</option>
+            <option>Diljit Dosanjh</option>
+            <option>Ed Sheeran</option>
+            <option>Justin Bieber</option>
+            <option>KR$NA</option>
+            <option>Travis Scott</option>
+          </select>
+        </label>
+
+        <label>Rotate Y (degrees):
+          <input id="rot" type="range" min="-180" max="180" value="0">
+        </label>
+
+        <label>Rotate X (degrees):
+          <input id="tilt" type="range" min="-90" max="90" value="-10">
+        </label>
+
+        <label>Light intensity:
+          <input id="light" type="range" min="0" max="1" step="0.05" value="0.9">
+        </label>
+
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button id="freezeBtn" class="btn small">Freeze Camera</button>
+          <button id="bookArtistBtn" class="btn small cta">Book for this artist</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">© RHYTHM INDIA • Created by Hackanauts</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
