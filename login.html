@@ -1,0 +1,51 @@
+<!-- Save as login.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Rhythm India</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg">
+  <header class="topbar">
+    <div class="brand">RHYTHM INDIA</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="lineup.html">Lineup</a>
+      <a href="stage.html">Stage Preview</a>
+      <a href="login.html">Login</a>
+      <a href="booking.html" class="cta">Book Tickets</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2 class="page-title">Welcome Back</h2>
+    <p class="lead">Log in to save your favorite artists and fast-track bookings.</p>
+
+    <div class="booking-form" style="max-width:520px;margin:18px auto;">
+      <form id="loginForm">
+        <div class="form-grid" style="grid-template-columns:1fr;">
+          <label>
+            Email
+            <input type="email" id="loginEmail" required placeholder="you@example.com">
+          </label>
+          <label>
+            Password
+            <input type="password" id="loginPass" required placeholder="••••••••">
+          </label>
+        </div>
+        <div class="form-actions" style="margin-top:12px;display:flex;gap:10px;align-items:center;">
+          <button type="submit" class="btn cta">Login</button>
+          <a href="index.html" class="btn hollow">Cancel</a>
+        </div>
+        
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">© RHYTHM INDIA • Created by Hackanauts</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
