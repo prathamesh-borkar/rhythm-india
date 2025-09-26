@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rhythm India — Home</title>
+
+  <!-- Global stylesheet (your existing styles) -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Premium fonts (applied site-wide) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Theme variables override (keeps parity with styles.css) ---------- */
+    :root{
+      --bg:#05050a;
+      --accent:#ffd300;
+      --muted:rgba(255,255,255,0.66);
+      --glass: rgba(255,255,255,0.03);
+      --glass-strong: rgba(255,255,255,0.06);
+      --primary1: #00f0ff;
+      --primary2: #ff00d4;
+    }
+
+    /* Force premium fonts across site */
+    html,body,button,input,select,textarea{
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    h1,h2,h3,.brand{
+      font-family: "Orbitron", "Poppins", sans-serif;
+      letter-spacing: 1px;
+    }
+
+    /* Landing-specific layout */
+    .landing-hero {
+      position: relative;
+      height: calc(100vh - 72px); /* leave topbar */
+      min-height: 540px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: center;
+      padding: 36px;
+    }
+
+    /* Slideshow container */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45));
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 80px rgba(0,240,255,0.03) inset;
+      border:1px solid var(--glass-strong);
+    }
+
+    .slide {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      background-position:center;
+      background-size:cover;
+      opacity:0;
+      transform:scale(1.03);
+      animation: slideFade 20s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+    .slide:nth-child(1){ animation-delay: 0s; }
+    .slide:nth-child(2){ animation-delay: 5s; }
+    .slide:nth-child(3){ animation-delay: 10s; }
+    .slide:nth-child(4){ animation-delay: 15s; }
+
+    /* Crossfade + slight slow zoom */
+    @keyframes slideFade {
+      0%   { opacity: 0; transform: scale(1.03); }
+      4%   { opacity: 1; transform: scale(1.02); }
+      23%  { opacity: 1; transform: scale(1.00); }
+      28%  { opacity: 0; transform: scale(1.00); }
+      100% { opacity: 0; transform: scale(1.03); }
+    }
+
+    /* Slideshow overlay content (call to action) */
+    .hero-panel {
+      position: absolute;
+      left: 32px;
+      bottom: 28px;
+      z-index: 6;
+      color: white;
+      max-width: 560px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.5));
+      padding: 18px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--glass);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+    }
+    .hero-panel h2{
+      margin: 0 0 6px;
+      font-size: 28px;
+      color: white;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    }
+    .hero-panel p{ margin:0; color:var(--muted); }
+
+    /* Right column - quick info + CTA */
+    .hero-side {
+      padding: 20px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--glass);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+    .hero-side .meta { color: var(--muted); }
+    .hero-side .cta-row { display:flex; gap:10px; }
+    .btn-hero {
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      border:none;
+      background: linear-gradient(90deg,var(--primary1),var(--primary2));
+      color:#04060a;
+      box-shadow: 0 8px 30px rgba(0,240,255,0.06);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--primary1);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Featured grid overrides to guarantee identical artist image sizing */
+    .featured-grid { margin-top: 22px; gap: 14px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+    .featured-card img, .artist-card img {
+      width: 100%;
+      height: 200px;          /* fixed, consistent height */
+      object-fit: cover;      /* crop to fill without stretching */
+      display:block;
+      border-radius:10px;
+      border: 1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(180deg, rgba(0,0,0,0.2), transparent);
+    }
+
+    /* Small responsive tweaks */
+    @media (max-width: 980px){
+      .landing-hero { grid-template-columns: 1fr; height: auto; padding: 18px; gap: 18px; }
+      .hero-side { height: auto; order: 2; }
+      .slideshow { height: 440px; }
+    }
+  </style>
+</head>
+
+<body class="bg">
+  <!-- Topbar (use your existing .topbar from styles.css) -->
+  <header class="topbar" role="banner">
+    <div class="brand">RHYTHM INDIA</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="lineup.html">Lineup</a>
+      <a href="stage.html">Stage Preview</a>
+      <a href="login.html">Login</a>
+      <a href="booking.html" class="cta">Book Tickets</a>
+    </nav>
+  </header>
+
+  <!-- Hero / Slideshow -->
+  <main class="container" role="main">
+    <section class="landing-hero">
+      <!-- Left: Slideshow -->
+      <div class="slideshow" aria-hidden="false">
+        <!-- slides: use the exact images you provided -->
+        <div class="slide" style="background-image:url('https://img.freepik.com/free-photo/excited-audience-watching-confetti-fireworks-having-fun-music-festival-night-copy-space_637285-559.jpg?semt=ais_hybrid&w=740&q=80');"></div>
+
+        <div class="slide" style="background-image:url('https://www.hindustantimes.com/ht-img/img/2025/01/25/550x309/Coldplay-concert-ahmedabad-_Narendra_Modi_stadium__1737769255902_1737769256199.jpg');"></div>
+
+        <div class="slide" style="background-image:url('https://images.news18.com/ibnlive/uploads/2025/03/MixCollage-27-Mar-2025-04-27-PM-7101-2025-03-d0d8043335f19225f216cde07187828f.jpg');"></div>
+
+        <div class="slide" style="background-image:url('https://gighub.club/mediafiles/event/images/https3A2F2Fmedia.insider.in2Fimage2Fupload2Fc_crop2Cg_custom2Fv16627203452F_yinVpHp.jpg');"></div>
+
+        <!-- overlay content -->
+        <div class="hero-panel" role="region" aria-label="Festival highlights">
+          <h2>Rhythm India — The Ultimate Music Festival</h2>
+          <p class="muted">4 days • multiple stages • world-class artists • unforgettable nights</p>
+        </div>
+      </div>
+
+      <!-- Right: Quick info + CTA -->
+      <aside class="hero-side" aria-label="Quick booking">
+        <div>
+          <h3 style="margin:0 0 6px">Next headline act</h3>
+          <p class="meta" style="margin:0 0 16px">Experience arena anthems, intimate sets and high-energy DJ shows — secure your spot now.</p>
+
+          <div style="display:grid;gap:8px">
+            <div style="display:flex;gap:10px;align-items:center">
+              <div style="width:64px;height:64px;border-radius:10px;overflow:hidden">
+                <img src="https://i.scdn.co/image/ab6761610000e5eb5ba2d75eb08a2d672f9b69b7" alt="Arijit" style="width:100%;height:100%;object-fit:cover">
+              </div>
+              <div>
+                <strong>Arijit Singh</strong><br>
+                <small class="muted">Sat • Main Stage • 9:30pm</small>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;align-items:center">
+              <div style="width:64px;height:64px;border-radius:10px;overflow:hidden">
+                <!-- Diljit thumb (object-fit ensures correct sizing) -->
+                <img src="https://cdn.britannica.com/20/264620-050-34641E2A/Diljit-Dosanjh-backstage-Coachella-Indio-California-April-2023.jpg" alt="Diljit" style="width:100%;height:100%;object-fit:cover">
+              </div>
+              <div>
+                <strong>Diljit Dosanjh</strong><br>
+                <small class="muted">Fri • Punjabi Stage • 8:00pm</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="cta-row" style="margin-top:6px">
+            <a href="booking.html" class="btn-hero">Book Tickets</a>
+            <a href="lineup.html" class="btn-hero btn-ghost" style="text-decoration:none;padding:10px 14px;border-radius:8px;">See Lineup</a>
+          </div>
+
+          <p style="margin-top:14px;color:var(--muted);font-size:13px">Limited passes — choose your tier at booking.</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Featured artists (consistent sizes) -->
+    <section class="container" aria-labelledby="featured-heading" style="margin-top:18px;">
+      <h2 id="featured-heading" class="page-title">Featured Artists</h2>
+      <p class="lead">Top acts, all set to light up the stages — tap an artist for details.</p>
+
+      <div class="featured-grid">
+        <!-- Arijit -->
+        <a class="featured-card" href="artist.html?artist=Arijit" title="Arijit Singh">
+          <img src="https://i.scdn.co/image/ab6761610000e5eb5ba2d75eb08a2d672f9b69b7" alt="Arijit Singh">
+          <div class="fc-info" style="padding:10px;">
+            <h4>Arijit Singh</h4>
+            <small class="muted">Soulful &amp; powerful</small>
+          </div>
+        </a>
+
+        <!-- Diljit -->
+        <a class="featured-card" href="artist.html?artist=Diljit" title="Diljit Dosanjh">
+          <!-- same fixed display height ensures consistent sizing -->
+          <img src="https://cdn.britannica.com/20/264620-050-34641E2A/Diljit-Dosanjh-backstage-Coachella-Indio-California-April-2023.jpg" alt="Diljit Dosanjh">
+          <div class="fc-info" style="padding:10px;">
+            <h4>Diljit Dosanjh</h4>
+            <small class="muted">Punjabi powerhouse</small>
+          </div>
+        </a>
+
+        <!-- Travis (updated link) -->
+        <a class="featured-card" href="artist.html?artist=Travis" title="Travis Scott">
+          <img src="https://media.npr.org/assets/img/2015/09/11/travis_rodeo_std_cvr_5x5_nopa_sq-77db02ea7a0cb5f1e6dfb320241c1425ff32b9cc.jpg" alt="Travis Scott">
+          <div class="fc-info" style="padding:10px;">
+            <h4>Travis Scott</h4>
+            <small class="muted">Rager energy</small>
+          </div>
+        </a>
+
+        <!-- KR$NA (example) -->
+        <a class="featured-card" href="artist.html?artist=KR$NA" title="KR$NA">
+          <img src="https://yt3.googleusercontent.com/ytc/AIdro_n00p_ZePoxDQQ9m1fOAv5f6CPy-GyG97eU5hKHI3wX5cM=s900-c-k-c0x00ffffff-no-rj" alt="KR$NA">
+          <div class="fc-info" style="padding:10px;">
+            <h4>KR$NA</h4>
+            <small class="muted">Sharp bars</small>
+          </div>
+        </a>
+
+        <!-- Justin Bieber -->
+        <a class="featured-card" href="artist.html?artist=Justin" title="Justin Bieber">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Justin_Bieber_in_2015.jpg" alt="Justin Bieber">
+          <div class="fc-info" style="padding:10px;">
+            <h4>Justin Bieber</h4>
+            <small class="muted">Pop &amp; R&B</small>
+          </div>
+        </a>
+
+        <!-- Ed Sheeran -->
+        <a class="featured-card" href="artist.html?artist=Ed" title="Ed Sheeran">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxWHMN1jBRj6JYCqkwviOSYNZ5uv1IOoXVBA&s" alt="Ed Sheeran">
+          <div class="fc-info" style="padding:10px;">
+            <h4>Ed Sheeran</h4>
+            <small class="muted">Loop-pedal master</small>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© RHYTHM INDIA • Created by Hackanauts</div>
+  </footer>
+
+  <!-- your JavaScript (existing main.js handles interactions on other pages) -->
+  <script src="main.js"></script>
+</body>
+</html>
