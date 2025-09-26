@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Tickets - Rhythm India</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Background image you provided */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url("https://img.freepik.com/free-photos-vectors/neon-background") no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .booking-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(45deg, #ff00d4, #00f0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin: 0.5rem 0 0.2rem;
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #ff00d4, #00f0ff);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: scale(1.05); }
+
+    .success-message {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background: rgba(0, 255, 100, 0.2);
+      color: #00ff88;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-container">
+    <h2>Book Your Tickets</h2>
+    <form id="bookingForm">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+
+      <label for="artist">Choose Artist</label>
+      <select id="artist" required>
+        <option value="">-- Select --</option>
+        <option>Arijit Singh</option>
+        <option>Diljit Dosanjh</option>
+        <option>Travis Scott</option>
+        <option>Honey Singh</option>
+      </select>
+
+      <label for="date">Select Date</label>
+      <input type="date" id="date" required>
+
+      <label for="qty">Tickets</label>
+      <input type="number" id="qty" min="1" max="10" value="1" required>
+
+      <label for="tier">Ticket Tier</label>
+      <select id="tier" required>
+        <option value="">-- Select --</option>
+        <option>Silver</option>
+        <option>Gold</option>
+        <option>Platinum</option>
+      </select>
+
+      <button type="submit">Book Now</button>
+    </form>
+    <div class="success-message" id="successMsg">
+      ✅ Successfully Booked! 🎉
+    </div>
+  </div>
+
+  <script>
+    const bookingForm = document.getElementById('bookingForm');
+    const successMsg = document.getElementById('successMsg');
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // store booking details
+      const booking = {
+        fullname: document.getElementById('fullname').value,
+        email: document.getElementById('email').value,
+        artist: document.getElementById('artist').value,
+        date: document.getElementById('date').value,
+        qty: document.getElementById('qty').value,
+        tier: document.getElementById('tier').value,
+      };
+      localStorage.setItem('nf_booking', JSON.stringify(booking));
+
+      // show success message
+      successMsg.style.display = 'block';
+
+      // optionally redirect after 2s
+      setTimeout(() => {
+        window.location.href = "confirmation.html";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
