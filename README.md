@@ -26,3 +26,7 @@ JavaScript (ES6)	Dynamic behavior and interactivity
 
 ## 🛜 Live Demo
 👉🏻 https://rhythm-india-pratham.netlify.app/
+
+## Preview 
+<img width="2940" height="1654" alt="image" src="https://github.com/user-attachments/assets/2df79c7d-efd3-4363-a2fb-4778ea7a081e" />
+
